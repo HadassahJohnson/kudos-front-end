@@ -1,8 +1,8 @@
 import React from "react";
 import '../styles/Wireframe.css';
 import Header from "../components/Header";
-import ReceivedKudosProf from "../components/ReceivedKudosProf";
-import SentKudosProf from "../components/SentKudosProf";
+import ReceivedKudosProf from "../components/SubmittedKudosProf";
+import SentKudosProf from "../components/ReviewedKudosProf";
 import Footer from "../components/Footer";
 
 function ProfessorView() {

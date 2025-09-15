@@ -1,18 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ImageModal from "./ImageModal";
 
-// const submitted = [
-//     {
-//         sender: "John Doe",
-//         recipient: "Jane Smith",
-//         title: "Excellent Work!",
-//         message:
-//             "I thought you did a great job with the log-in page. It looks sleek and me...",
-//         date: "9/13/25",
-//         imageUrl: "/img/logo192.png",
-//     },
-// ];
-
 function ReceivedKudosProf() {
     const [submitted, setSubmitted] = useState([]);
     const [selectedImage, setSelectedImage] = useState(null);

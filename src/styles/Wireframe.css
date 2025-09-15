@@ -138,7 +138,6 @@ tr.selected-row {
 
 /* Submitted Table */
 td.submitted-kudos-table-data {
-    background-color: #05888A;
     position: relative;      /* for pseudo-element */
     padding: 8px 16px;
     vertical-align: middle;
@@ -164,7 +163,6 @@ td.submitted-kudos-table-data:first-child::before {
 
 /* Received Table */
 td.received-kudos-table-data {
-    background-color: #E6F3F3;
     position: relative;
     padding: 8px 16px;
     vertical-align: middle;

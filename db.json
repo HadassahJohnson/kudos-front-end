@@ -3,24 +3,28 @@
         {
             "id": 1,
             "recipientType": "student",
-            "sender": "Helen",
-            "recipient": "Bob",
-            "subject": "Great Job",
-            "message": "Great job saving the world!",
+            "senderType": "student",
+            "sender": "Mark",
+            "recipient": "Development Team",
+            "subject": "Team Player",
+            "message": "Your support during the porject crunch time was invaluable. The team couldn't have done it without you!",
+            "status": "Pending",
             "date": "9/13/25",
-            "imageURL": "/img/logo192.png",
+            "imageUrl": "/img/kudos1.png",
             "read": false
             
         },
         {
             "id": 2,
             "recipientType": "teacher",
-            "sender": "Bob",
-            "recipient": "Helen",
-            "subject": "Incredible",
-            "message": "I think you're incredible!",
+            "senderType": "student",
+            "sender": "Sarah",
+            "recipient": "Alex",
+            "subject": "Great Job!",
+            "message": "Thank you for going above and beyond with the client presentation. Your attention to detail really made a difference!",
+            "status": "Reviewed",
             "date": "9/13/25",
-            "imageURL": "/img/logo192.png",
+            "imageUrl": "/img/kudos2.png",
             "read": true            
         }
     ]
