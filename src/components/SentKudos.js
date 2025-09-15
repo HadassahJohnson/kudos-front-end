@@ -17,7 +17,7 @@ function SentKudos() {
     const close = () => setSelectedImage(null);
 
     return (
-        <section>
+        <section className ={'sent-kudos'}>
             <h2>Sent Kudos</h2>
             <table className="k-table">
                 <thead>

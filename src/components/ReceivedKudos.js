@@ -7,6 +7,7 @@ const received = [
         title: "Totally Awesome!",
         message:
             "You are the smartest person I know. Would you mind tutoring me in Co...",
+        date: "9/13/25",
         imageUrl: "/img/logo192.png",
     },
 ];
@@ -26,6 +27,7 @@ function ReceivedKudos() {
                     <th>Sender</th>
                     <th>Title</th>
                     <th>Message</th>
+                    <th>Date</th>
                 </tr>
                 </thead>
                 <tbody>

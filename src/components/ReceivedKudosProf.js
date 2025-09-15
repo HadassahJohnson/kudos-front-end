@@ -8,6 +8,7 @@ const submitted = [
         title: "Excellent Work!",
         message:
             "I thought you did a great job with the log-in page. It looks sleek and me...",
+        date: "9/13/25",
         imageUrl: "/img/logo192.png",
     },
 ];
@@ -18,7 +19,7 @@ function ReceivedKudosProf() {
     const close = () => setSelectedImage(null);
 
     return (
-        <section>
+        <section className = {'received-kudos'}>
             <h2>Submitted Kudos</h2>
             <table className="k-table">
                 <thead>
@@ -27,6 +28,7 @@ function ReceivedKudosProf() {
                     <th>Recipient</th>
                     <th>Title</th>
                     <th>Message</th>
+                    <th>Date</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -41,10 +43,11 @@ function ReceivedKudosProf() {
                             if (e.key === "Enter" || e.key === " ") open(k.imageUrl);
                         }}
                     >
-                        <td><strong>{k.sender}</strong></td>
-                        <td><strong>{k.recipient}</strong></td>
-                        <td><strong>{k.title}</strong></td>
-                        <td><strong>{k.message}</strong></td>
+                        <td className={"submitted-kudos-table-data"}>{k.sender}</td>
+                        <td className={"submitted-kudos-table-data"}>{k.recipient}</td>
+                        <td className={"submitted-kudos-table-data"}>{k.title}</td>
+                        <td className={"submitted-kudos-table-data"}>{k.message}</td>
+                        <td className={"submitted-kudos-table-data"}>{k.date}</td>
                     </tr>
                 ))}
                 </tbody>

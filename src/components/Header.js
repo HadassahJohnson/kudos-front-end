@@ -6,7 +6,7 @@ function Header() {
       <img src="/logo.gif" alt="Animated Logo" className="logo" />
       <nav className="nav-buttons">
         <button>HOME</button>
-        <button>GENERATE NEW</button>
+        <button>CREATE NEW</button>
         <button>LOG OUT</button>
       </nav>
     </header>
