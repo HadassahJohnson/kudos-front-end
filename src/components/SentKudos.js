@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import ImageModal from "./ImageModal";
 
 const sent = [
     {
@@ -10,9 +11,10 @@ const sent = [
 ];
 
 function SentKudos() {
-    const openImage = (url) => {
-        window.open(url, "_blank", "noopener,noreferrer");
-    };
+    const [selectedImage, setSelectedImage] = useState(null);
+
+    const open = (url) => setSelectedImage(url);
+    const close = () => setSelectedImage(null);
 
     return (
         <section>
@@ -32,9 +34,9 @@ function SentKudos() {
                         className="row-click"
                         role="button"
                         tabIndex={0}
-                        onClick={() => openImage(k.imageUrl)}
+                        onClick={() => open(k.imageUrl)}
                         onKeyDown={(e) => {
-                            if (e.key === "Enter" || e.key === " ") openImage(k.imageUrl);
+                            if (e.key === "Enter" || e.key === " ") open(k.imageUrl);
                         }}
                     >
                         <td>{k.recipient}</td>
@@ -44,6 +46,8 @@ function SentKudos() {
                 ))}
                 </tbody>
             </table>
+
+            <ImageModal src={selectedImage} onClose={close} />
         </section>
     );
 }

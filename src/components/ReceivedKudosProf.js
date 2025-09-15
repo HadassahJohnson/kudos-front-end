@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useState } from "react";
+import ImageModal from "./ImageModal";
+
+const submitted = [
+    {
+        sender: "John Doe",
+        recipient: "Jane Smith",
+        title: "Excellent Work!",
+        message:
+            "I thought you did a great job with the log-in page. It looks sleek and me...",
+        imageUrl: "/img/logo192.png",
+    },
+];
 
 function ReceivedKudosProf() {
+    const [selectedImage, setSelectedImage] = useState(null);
+    const open = (url) => setSelectedImage(url);
+    const close = () => setSelectedImage(null);
+
     return (
         <section>
             <h2>Submitted Kudos</h2>
-            <table>
+            <table className="k-table">
                 <thead>
                 <tr>
                     <th>Sender</th>
@@ -14,14 +30,27 @@ function ReceivedKudosProf() {
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td><strong>John Doe</strong></td>
-                    <td><strong>Jane Smith</strong></td>
-                    <td><strong>Excellent Work!</strong></td>
-                    <td><strong>I thought you did a great job with the log-in page. It looks sleek and me...</strong></td>
-                </tr>
+                {submitted.map((k, i) => (
+                    <tr
+                        key={i}
+                        className="row-click"
+                        role="button"
+                        tabIndex={0}
+                        onClick={() => open(k.imageUrl)}
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter" || e.key === " ") open(k.imageUrl);
+                        }}
+                    >
+                        <td><strong>{k.sender}</strong></td>
+                        <td><strong>{k.recipient}</strong></td>
+                        <td><strong>{k.title}</strong></td>
+                        <td><strong>{k.message}</strong></td>
+                    </tr>
+                ))}
                 </tbody>
             </table>
+
+            <ImageModal src={selectedImage} onClose={close} />
         </section>
     );
 }
