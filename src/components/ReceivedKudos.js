@@ -1,19 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ImageModal from "./ImageModal";
 
-const received = [
-    {
-        sender: "Bill Gates",
-        title: "Totally Awesome!",
-        message:
-            "You are the smartest person I know. Would you mind tutoring me in Co...",
-        date: "9/13/25",
-        imageUrl: "/img/logo192.png",
-    },
-];
-
 function ReceivedKudos() {
+    const [received, setReceived] = useState([]);
     const [selectedImage, setSelectedImage] = useState(null);
+
+    useEffect(() => {
+        fetch("http://localhost:3001/cards")
+        .then((res) => res.json())
+        .then((data) => setReceived(data))
+        .catch((err) => console.error("Error fetching kudos:", err));
+    }, []);
 
     const open = (url) => setSelectedImage(url);
     const close = () => setSelectedImage(null);
@@ -23,28 +20,29 @@ function ReceivedKudos() {
             <h2>Received Kudos</h2>
             <table className="k-table">
                 <thead>
-                <tr>
-                    <th>Sender</th>
-                    <th>Title</th>
-                    <th>Message</th>
-                    <th>Date</th>
-                </tr>
+                    <tr>
+                        <th>Sender</th>
+                        <th>Title</th>
+                        <th>Message</th>
+                        <th>Date</th>
+                    </tr>
                 </thead>
                 <tbody>
-                {received.map((k, i) => (
+                {received.map((kudo, i) => (
                     <tr
-                        key={i}
+                        key={kudo.id || i}
                         className="row-click"
                         role="button"
                         tabIndex={0}
-                        onClick={() => open(k.imageUrl)}
+                        onClick={() => open(kudo.imageUrl)}
                         onKeyDown={(e) => {
-                            if (e.key === "Enter" || e.key === " ") open(k.imageUrl);
+                            if (e.key === "Enter" || e.key === " ") open(kudo.imageUrl);
                         }}
                     >
-                        <td><strong>{k.sender}</strong></td>
-                        <td>{k.title}</td>
-                        <td className="truncate">{k.message}</td>
+                        <td><strong>{kudo.sender}</strong></td>
+                        <td>{kudo.subject}</td>
+                        <td className="truncate">{kudo.content || kudo.message}</td>
+                        <td>{kudo.date || "-"}</td>
                     </tr>
                 ))}
                 </tbody>

@@ -1,0 +1,27 @@
+{
+    "cards": [
+        {
+            "id": 1,
+            "recipientType": "student",
+            "sender": "Helen",
+            "recipient": "Bob",
+            "subject": "Great Job",
+            "message": "Great job saving the world!",
+            "date": "9/13/25",
+            "imageURL": "/img/logo192.png",
+            "read": false
+            
+        },
+        {
+            "id": 2,
+            "recipientType": "teacher",
+            "sender": "Bob",
+            "recipient": "Helen",
+            "subject": "Incredible",
+            "message": "I think you're incredible!",
+            "date": "9/13/25",
+            "imageURL": "/img/logo192.png",
+            "read": true            
+        }
+    ]
+}

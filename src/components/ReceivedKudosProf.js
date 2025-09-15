@@ -1,26 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ImageModal from "./ImageModal";
 
-const submitted = [
-    {
-        sender: "John Doe",
-        recipient: "Jane Smith",
-        title: "Excellent Work!",
-        message:
-            "I thought you did a great job with the log-in page. It looks sleek and me...",
-        date: "9/13/25",
-        imageUrl: "/img/logo192.png",
-    },
-];
+// const submitted = [
+//     {
+//         sender: "John Doe",
+//         recipient: "Jane Smith",
+//         title: "Excellent Work!",
+//         message:
+//             "I thought you did a great job with the log-in page. It looks sleek and me...",
+//         date: "9/13/25",
+//         imageUrl: "/img/logo192.png",
+//     },
+// ];
 
 function ReceivedKudosProf() {
+    const [submitted, setSubmitted] = useState([]);
     const [selectedImage, setSelectedImage] = useState(null);
+
+    useEffect(() => {
+        fetch("http://localhost:3001/cards")
+        .then((res) => res.json())
+        .then((data) => setSubmitted(data))
+        .catch((err) => console.error("Error fetching submitted kudos:", err));
+    }, []);
+
     const open = (url) => setSelectedImage(url);
     const close = () => setSelectedImage(null);
 
     return (
         <section className = {'received-kudos'}>
             <h2>Submitted Kudos</h2>
+
+            {submitted.length === 0 ? (
+                <p style={{ padding: '1rem', fontStyle: 'italic' }}>No Cards Submitted.</p>
+            ) : (
             <table className="k-table">
                 <thead>
                 <tr>
@@ -34,7 +47,7 @@ function ReceivedKudosProf() {
                 <tbody>
                 {submitted.map((k, i) => (
                     <tr
-                        key={i}
+                        key={k.id || i}
                         className="row-click"
                         role="button"
                         tabIndex={0}
@@ -45,14 +58,14 @@ function ReceivedKudosProf() {
                     >
                         <td className={"submitted-kudos-table-data"}>{k.sender}</td>
                         <td className={"submitted-kudos-table-data"}>{k.recipient}</td>
-                        <td className={"submitted-kudos-table-data"}>{k.title}</td>
-                        <td className={"submitted-kudos-table-data"}>{k.message}</td>
-                        <td className={"submitted-kudos-table-data"}>{k.date}</td>
+                        <td className={"submitted-kudos-table-data"}>{k.title || k.subject}</td>
+                        <td className={"submitted-kudos-table-data"}>{k.message || k.content}</td>
+                        <td className={"submitted-kudos-table-data"}>{k.date || "-"}</td>
                     </tr>
                 ))}
                 </tbody>
             </table>
-
+            )}
             <ImageModal src={selectedImage} onClose={close} />
         </section>
     );
