@@ -36,7 +36,7 @@ function ReceivedKudosStudent() {
                             if (e.key === "Enter" || e.key === " ") setSelectedImage(k.imageUrl);
                         }}
                     >
-                        <td className={'submitted-kudos-table-data'}><strong>{k.sender}</strong></td>
+                        <td className={'submitted-kudos-table-data'}>{k.sender}</td>
                         <td className={'submitted-kudos-table-data'}>{k.title}</td>
                         <td className={'submitted-kudos-table-data'}>{k.message}</td>
                         <td className={'submitted-kudos-table-data'}>{k.date}</td>

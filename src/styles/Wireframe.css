@@ -138,7 +138,7 @@ tr:hover {
 }
 
 tr.selected-row {
-    background-color: #E6F3F3;
+    background-color: #EBEBEB;
     color: white;
 }
 

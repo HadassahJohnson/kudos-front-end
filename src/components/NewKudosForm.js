@@ -75,7 +75,7 @@ function NewKudosForm({ onClose, onSubmit }) {
                         <button type = "button" onClick = {onClose} style = {{ backgroundColor: '#ccc'}}>
                             Cancel
                         </button>
-                        <button type = "submit" style = {{backgroundColor: '#05888A', color: 'white'}}>
+                        <button type = "submit" style = {{backgroundColor: '#B1D2D3',fontFamily:'Poppins', color: 'black'}}>
                             Submit
                         </button>
                     </div>
