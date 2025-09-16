@@ -6,7 +6,7 @@ function ReceivedKudosProf() {
     const [selectedImage, setSelectedImage] = useState(null);
 
     useEffect(() => {
-        fetch("http://localhost:3001/cards")
+        fetch("http://localhost:3001/cards?recipientType=teacher")
         .then((res) => res.json())
         .then((data) => setSubmitted(data))
         .catch((err) => console.error("Error fetching submitted kudos:", err));

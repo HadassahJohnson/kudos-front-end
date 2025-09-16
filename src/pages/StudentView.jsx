@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import '../styles/Wireframe.css';
 import Header from "../components/Header";
 import NewKudosForm from "../components/NewKudosForm";
@@ -9,10 +9,51 @@ import Footer from "../components/Footer";
 function StudentView() {
 
     const [showForm, setShowForm] = useState(false);
+    const [sentKudos, setSentKudos] = useState([]);
+    const [submittedKudos, setSubmittedKudos] = useState([]);
+
+    const fetchSubmittedKudos = () => {
+        fetch('http://localhost:3001/cards?recipientType=teacher')
+        .then(res => res.json())
+        .then(data => setSubmittedKudos(data))
+        .catch(err => console.error("Error fetching submitted kudos:", err));
+    };
+    
+    const fetchSentKudos = () => {
+        fetch('http://localhost:3001/cards?senderType=student')
+        .then(res => res.json())
+        .then(data => setSentKudos(data))
+        .catch(err => console.error("Error fetching sent kudos:", err));
+    };
+
+    useEffect(() => {
+        fetchSubmittedKudos();
+        fetchSentKudos();
+    }, []);
+
     const handleNewKudos = (newKudos) => {
-        console.log("New kudos submitted:", newKudos);
-        setShowForm(false);
-    }
+        const kudosWithDate = {
+            ...newKudos,
+            date: new Date().toLocaleDateString(),
+            recipientType: 'teacher',
+            senderType: 'student',
+            status: "Submitted"
+        };
+
+        fetch('http://localhost:3001/cards', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify(kudosWithDate)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log("New kudos submitted:", data);
+            setShowForm(false);
+            fetchSubmittedKudos();
+            fetchSentKudos();
+        })
+        .catch(err => console.error("Error saving new kudos:", err));
+    };
 
     return (
         <div className="app-container">
@@ -26,7 +67,7 @@ function StudentView() {
         )}
             <div className="main-content">
                 <ReceivedKudosStudent />
-                <SentKudosStudent />
+                <SentKudosStudent messages = {sentKudos} />
             </div>
             <Footer />
         </div>

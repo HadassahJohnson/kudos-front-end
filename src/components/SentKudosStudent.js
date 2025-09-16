@@ -4,7 +4,7 @@ function SentKudosStudent() {
     const [messages, setMessages] = useState([]);
     
         useEffect(() => {
-            fetch('http://localhost:3001/cards')
+            fetch('http://localhost:3001/cards?senderType=student')
             .then((res) => res.json())
             .then((data) => {
                 const studentCards = data.filter(card => card.senderType === "student");
@@ -17,7 +17,7 @@ function SentKudosStudent() {
             <section className={'sent-kudos'}>
                 <h2>Sent Kudos</h2>
     
-                {messages.length === 0 ? (
+                {!messages || messages.length === 0 ? (
                     <p style={{ padding: '1rem', fontStyle: 'italic' }}>No Cards Sent.</p>
                 ) : (
                  <table>
