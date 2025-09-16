@@ -55,11 +55,11 @@ function ReviewedKudosProf() {
                             if (e.key === "Enter" || e.key === " ") setSelectedImage(k.imageUrl);
                         }}
                     >
-                        <td>{k.sender}</td>
-                        <td>{k.recipient}</td>
-                        <td>{k.title}</td>
-                        <td>{k.status}</td>
-                        <td>{k.date}</td>
+                        <td className={'received-kudos-table-data'}>{k.sender}</td>
+                        <td className={'received-kudos-table-data'}>{k.recipient}</td>
+                        <td className={'received-kudos-table-data'}>{k.title}</td>
+                        <td className={'received-kudos-table-data'}>{k.status}</td>
+                        <td className={'received-kudos-table-data'}>{k.date}</td>
                     </tr>
                 ))}
                 </tbody>

@@ -5,6 +5,7 @@ const sent = [
         recipient: "Abraham Lincoln",
         title: "Fantastic Effort!",
         status: "Received",
+        date:"9/13/25",
         imageUrl: "/img/logo192.png",
     },
 ];
@@ -21,6 +22,7 @@ function SentKudosStudent() {
                     <th>Recipient</th>
                     <th>Title</th>
                     <th>Kudos Status</th>
+                    <th>Date</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -34,9 +36,10 @@ function SentKudosStudent() {
                             if (e.key === "Enter" || e.key === " ") setSelectedImage(k.imageUrl);
                         }}
                     >
-                        <td>{k.recipient}</td>
-                        <td>{k.title}</td>
-                        <td>{k.status}</td>
+                        <td className={'received-kudos-table-data'}>{k.recipient}</td>
+                        <td className={'received-kudos-table-data'}>{k.title}</td>
+                        <td className={'received-kudos-table-data'}>{k.status}</td>
+                        <td className={'received-kudos-table-data'}>{k.date}</td>
                     </tr>
                 ))}
                 </tbody>

@@ -38,7 +38,6 @@ function NewKudosForm({ onClose, onSubmit }) {
     return (
         <div className = "modal-overlay">
             <div className = "modal-content" style = {{maxWidth: '500px' }}>
-                <h2>Create New Kudos</h2>
                 <form onSubmit = {handleSubmit} style = {{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                     <input
                     type = "text"
