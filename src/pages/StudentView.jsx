@@ -10,6 +10,7 @@ function StudentView() {
 
     const [showForm, setShowForm] = useState(false);
     const [sentKudos, setSentKudos] = useState([]);
+    const [receivedKudos, setReceivedKudos] = useState([]);
     const [submittedKudos, setSubmittedKudos] = useState([]);
 
     const fetchSubmittedKudos = () => {
@@ -27,8 +28,15 @@ function StudentView() {
     };
 
     useEffect(() => {
-        fetchSubmittedKudos();
-        fetchSentKudos();
+        fetch('http://localhost:3001/cards')
+        .then((res) => res.json())
+        .then((data) => {
+            setSentKudos(data.filter(msg => msg.senderType === 'student'));
+            setReceivedKudos(data.filter(msg => msg.recipientType === 'student'));
+        })
+        .catch((err) => console.error('Error fetching kudos:', err));
+        // fetchSubmittedKudos();
+        // fetchSentKudos();
     }, []);
 
     const handleNewKudos = (newKudos) => {
@@ -66,7 +74,7 @@ function StudentView() {
             />
         )}
             <div className="main-content">
-                <ReceivedKudosStudent />
+                <ReceivedKudosStudent messages = {receivedKudos} />
                 <SentKudosStudent messages = {sentKudos} />
             </div>
             <Footer />
