@@ -2,7 +2,7 @@
     "cards": [
         {
             "id": 1,
-            "recipientType": "student",
+            "recipientType": "teacher",
             "senderType": "student",
             "sender": "Mark",
             "recipient": "Development Team",
@@ -16,7 +16,7 @@
         },
         {
             "id": 2,
-            "recipientType": "teacher",
+            "recipientType": "student",
             "senderType": "student",
             "sender": "Sarah",
             "recipient": "Alex",
