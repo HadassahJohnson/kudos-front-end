@@ -112,6 +112,7 @@ table {
     margin-bottom: 20px;
     background: #EBEBEB;
     border: 1px solid #EBEBEB;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 th, td {
@@ -168,8 +169,14 @@ td.submitted-kudos-table-data:first-child::before {
 }
 
 /* Received Table */
-td.received-kudos-table-data {
+tr.received-kudos-row{
     background-color:#B1D2D3;
+}
+
+Tr.received-kudos-row:hover{
+    background-color: white;
+}
+td.received-kudos-table-data {
     position: relative;
     padding: 8px 16px;
     vertical-align: middle;
@@ -185,11 +192,9 @@ td.received-kudos-table-data:not(:first-child)::before {
     background-color: #555;
 }
 
-
 td.received-kudos-table-data:first-child::before {
     display: none;
 }
-
 
 .home-content {
   display: flex;
@@ -254,7 +259,7 @@ td.received-kudos-table-data:first-child::before {
     position: relative;
     background: white;
     font-family: 'Poppins', sans-serif;
-    padding: 50px;
+    padding: 20px;
     max-width: 500px;
     max-height: 500px;
     width:90%;
@@ -267,7 +272,7 @@ td.received-kudos-table-data:first-child::before {
 
 .modal-content img {
     max-width: 100%;
-    max-height: 70vh;
+    max-height: 100%;
     border-radius: 6px;
 }
 
@@ -333,8 +338,8 @@ td.received-kudos-table-data:first-child::before {
 }
 
 .submit-btn {
-    position:absolute;
-    bottom: 20px;
+    position:relative;
+    bottom: 6px;
     left:50%;
     transform: translateX(-50%);
     background: #B1D2D3;
